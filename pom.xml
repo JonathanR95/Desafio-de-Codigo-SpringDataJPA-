@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.1</version>
+		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>me.dio.academia</groupId>
-	<artifactId>academia-digital</artifactId>
+	<groupId>com.dio</groupId>
+	<artifactId>AcademiaDigitalInovation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>academia-digital</name>
-	<description>Tutorial API RESTful modelando sistema de academia de ginástica</description>
+	<name>AcademiaDigitalInovation</name>
+	<description>Desafio de projeto com Springboot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,8 +31,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
