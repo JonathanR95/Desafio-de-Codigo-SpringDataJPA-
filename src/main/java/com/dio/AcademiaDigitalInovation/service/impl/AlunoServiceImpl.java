@@ -1,13 +1,16 @@
 package com.dio.AcademiaDigitalInovation.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dio.AcademiaDigitalInovation.entity.Aluno;
+import com.dio.AcademiaDigitalInovation.entity.AvaliacaoFisica;
 import com.dio.AcademiaDigitalInovation.entity.form.AlunoForm;
 import com.dio.AcademiaDigitalInovation.entity.form.AlunoUpdateForm;
+import com.dio.AcademiaDigitalInovation.infra.utils.JavaTimeUtils;
 import com.dio.AcademiaDigitalInovation.repository.AlunoRepository;
 import com.dio.AcademiaDigitalInovation.service.IAlunoService;
 
@@ -36,9 +39,13 @@ public class AlunoServiceImpl implements IAlunoService {
 	}
 
 	@Override
-	public List<Aluno> getAll() {
+	public List<Aluno> getAll(String dataDeNascimento) {
+		if(dataDeNascimento == null) {
 		return repository.findAll();
-		
+		}else {
+			LocalDate localDate = LocalDate.parse(dataDeNascimento, JavaTimeUtils.LOCAL_DATE_FORMATTER);
+			return repository.findByDataDeNascimento(localDate);
+		}
 	}
 
 	@Override
@@ -53,5 +60,14 @@ public class AlunoServiceImpl implements IAlunoService {
 		
 	}
 
+	@Override
+	public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
+		
+		Aluno aluno = repository.findById(id).get();
+		
+		return aluno.getAvaliacoes();
+	}
+
+	
 	
 }
